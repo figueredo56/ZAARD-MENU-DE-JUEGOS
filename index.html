@@ -105,14 +105,13 @@
             100% { transform: scale(1.7); opacity: 1; }
         }
 
-        /* Navbar superior */
         .navbar {
             width: 100%;
             max-width: 1240px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 14px 18px;
             background: rgba(16, 7, 36, 0.95);
             border-bottom: 1.5px solid rgba(34, 211, 238, 0.55);
             box-shadow: 0 4px 28px rgba(147, 51, 234, 0.42);
@@ -125,16 +124,16 @@
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 11px;
+            gap: 10px;
             font-weight: 900;
-            font-size: 1.12rem;
+            font-size: 1.08rem;
             letter-spacing: 0.7px;
             color: #f3e8ff;
         }
 
         .brand-orb {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, var(--neon-cyan), var(--deep-purple) 65%, var(--phoenix-orange));
             border: 2px solid var(--neon-cyan);
@@ -145,9 +144,9 @@
             background: rgba(34, 16, 68, 0.92);
             border: 1px solid rgba(192, 132, 252, 0.65);
             color: #67e8f9;
-            padding: 7px 14px;
+            padding: 7px 13px;
             border-radius: 999px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 800;
             box-shadow: 0 0 14px rgba(192, 132, 252, 0.3);
         }
@@ -155,12 +154,19 @@
         .main-container {
             width: 100%;
             max-width: 1240px;
-            padding: 20px 16px 40px;
+            padding: 18px 12px 40px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 22px;
             position: relative;
             z-index: 5;
+        }
+
+        @media (min-width: 640px) {
+            .main-container {
+                padding: 20px 18px 42px;
+                gap: 24px;
+            }
         }
 
         /* Portada rotativa de 3 imágenes */
@@ -177,19 +183,8 @@
         .hero-slideshow {
             position: relative;
             width: 100%;
-            height: 230px;
-        }
-
-        @media (min-width: 640px) {
-            .hero-slideshow {
-                height: 310px;
-            }
-        }
-
-        @media (min-width: 960px) {
-            .hero-slideshow {
-                height: 360px;
-            }
+            aspect-ratio: 16 / 9;
+            max-height: 360px;
         }
 
         .hero-slide {
@@ -212,17 +207,17 @@
         .hero-overlay {
             position: relative;
             z-index: 2;
-            padding: 18px 20px 20px;
-            background: linear-gradient(180deg, rgba(10, 4, 24, 0.25) 0%, rgba(10, 4, 24, 0.88) 45%, rgba(9, 3, 21, 0.96) 100%);
+            padding: 16px 18px 18px;
+            background: linear-gradient(180deg, rgba(10, 4, 24, 0.35) 0%, rgba(10, 4, 24, 0.90) 45%, rgba(9, 3, 21, 0.96) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 8px;
+            gap: 7px;
         }
 
         .hero-title {
-            font-size: clamp(1.45rem, 3.2vw, 2.3rem);
+            font-size: clamp(1.35rem, 3vw, 2.2rem);
             font-weight: 900;
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--phoenix-orange), var(--neon-pink));
             -webkit-background-clip: text;
@@ -232,19 +227,19 @@
 
         .hero-subtitle {
             color: #e9d5ff;
-            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-size: clamp(0.86rem, 1.3vw, 1.02rem);
             max-width: 780px;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .slide-dots {
             display: flex;
             gap: 9px;
-            margin-top: 6px;
+            margin-top: 5px;
         }
 
         .slide-dot {
-            width: 28px;
+            width: 26px;
             height: 7px;
             border-radius: 999px;
             border: none;
@@ -254,40 +249,46 @@
         }
 
         .slide-dot.active {
-            width: 44px;
+            width: 42px;
             background: linear-gradient(90deg, var(--neon-cyan), var(--phoenix-orange));
             box-shadow: 0 0 14px var(--neon-cyan);
         }
 
-        /* Sección de los 4 juegos */
+        /* Sección de los 4 juegos: 2 arriba y 2 abajo */
         .section-header-box {
             text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .section-header-box h2 {
-            font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+            font-size: clamp(1.25rem, 2.3vw, 1.8rem);
             color: #f3e8ff;
             text-shadow: 0 0 18px rgba(192, 132, 252, 0.45);
         }
 
         .section-header-box p {
             color: #cbd5e1;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
             width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .games-grid {
+                gap: 20px;
+            }
         }
 
         .game-card {
             background: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -299,20 +300,21 @@
         }
 
         .game-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
         }
 
         .game-card:active {
             transform: scale(0.985);
         }
 
+        /* Contenedor de imagen más ancho que alto, estilo portada */
         .game-media-wrap {
             position: relative;
             width: 100%;
-            height: 175px;
+            aspect-ratio: 16 / 9;
             overflow: hidden;
             background: #120729;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
         }
 
         .game-media-wrap img {
@@ -324,49 +326,56 @@
         }
 
         .game-card:hover .game-media-wrap img {
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .game-body {
-            padding: 16px 18px 18px;
+            padding: 12px 13px 14px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             flex: 1;
             justify-content: space-between;
         }
 
+        @media (min-width: 640px) {
+            .game-body {
+                padding: 16px 18px 18px;
+                gap: 10px;
+            }
+        }
+
         .game-title {
-            font-size: 1.18rem;
+            font-size: clamp(0.98rem, 1.8vw, 1.2rem);
             font-weight: 900;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
         .game-desc {
-            font-size: 0.9rem;
+            font-size: clamp(0.78rem, 1.25vw, 0.92rem);
             color: #ddd6fe;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .game-go-tag {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             width: 100%;
-            padding: 11px 14px;
-            border-radius: 12px;
+            padding: 9px 10px;
+            border-radius: 11px;
             font-weight: 900;
-            font-size: 0.9rem;
-            letter-spacing: 0.4px;
+            font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+            letter-spacing: 0.3px;
             margin-top: 4px;
+            text-align: center;
             transition: 0.25s ease;
         }
 
-        /* Estilos diferenciados por juego */
         .card-memoria {
             border: 1.5px solid rgba(34, 211, 238, 0.72);
-            box-shadow: 0 0 28px rgba(34, 211, 238, 0.24);
+            box-shadow: 0 0 26px rgba(34, 211, 238, 0.24);
         }
         .card-memoria:hover {
             border-color: var(--neon-cyan);
@@ -381,7 +390,7 @@
 
         .card-lucky {
             border: 1.5px solid rgba(245, 158, 11, 0.72);
-            box-shadow: 0 0 28px rgba(245, 158, 11, 0.24);
+            box-shadow: 0 0 26px rgba(245, 158, 11, 0.24);
         }
         .card-lucky:hover {
             border-color: var(--neon-gold);
@@ -396,7 +405,7 @@
 
         .card-run {
             border: 1.5px solid rgba(255, 107, 26, 0.75);
-            box-shadow: 0 0 28px rgba(255, 107, 26, 0.25);
+            box-shadow: 0 0 26px rgba(255, 107, 26, 0.25);
         }
         .card-run:hover {
             border-color: var(--phoenix-orange);
@@ -411,7 +420,7 @@
 
         .card-battle {
             border: 1.5px solid rgba(192, 132, 252, 0.75);
-            box-shadow: 0 0 28px rgba(192, 132, 252, 0.25);
+            box-shadow: 0 0 26px rgba(192, 132, 252, 0.25);
         }
         .card-battle:hover {
             border-color: var(--neon-purple);
@@ -424,14 +433,17 @@
             color: #f3e8ff;
         }
 
-        /* Franja divisoria energética */
+        /* Franja divisoria + etiquetas FINANCE, TRACKER, WEB y NEXUS */
         .energy-divider {
-            background: linear-gradient(90deg, rgba(109, 40, 217, 0.28), rgba(34, 211, 238, 0.22), rgba(255, 107, 26, 0.28));
-            border: 1px solid rgba(192, 132, 252, 0.55);
-            border-radius: 16px;
-            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(22, 10, 48, 0.95), rgba(11, 5, 26, 0.98));
+            border: 1.5px solid rgba(192, 132, 252, 0.6);
+            border-radius: 18px;
+            padding: 16px;
             text-align: center;
-            box-shadow: 0 0 24px rgba(147, 51, 234, 0.3);
+            box-shadow: 0 0 28px rgba(147, 51, 234, 0.34);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .energy-divider strong {
@@ -439,12 +451,71 @@
             font-size: 1rem;
             color: #f3e8ff;
             letter-spacing: 0.6px;
-            margin-bottom: 3px;
         }
 
         .energy-divider span {
             font-size: 0.85rem;
             color: #cbd5e1;
+        }
+
+        .quick-tags-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .quick-tags-row {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 12px;
+            }
+        }
+
+        .ecosystem-tag-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 11px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.84rem;
+            letter-spacing: 0.4px;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .ecosystem-tag-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .tag-finance {
+            background: rgba(34, 211, 238, 0.16);
+            border: 1.5px solid var(--neon-cyan);
+            color: #cffafe;
+            box-shadow: 0 0 16px rgba(34, 211, 238, 0.24);
+        }
+
+        .tag-tracker {
+            background: rgba(52, 211, 153, 0.16);
+            border: 1.5px solid var(--neon-green);
+            color: #d1fae5;
+            box-shadow: 0 0 16px rgba(52, 211, 153, 0.24);
+        }
+
+        .tag-web {
+            background: rgba(255, 107, 26, 0.18);
+            border: 1.5px solid var(--phoenix-orange);
+            color: #ffedd5;
+            box-shadow: 0 0 16px rgba(255, 107, 26, 0.24);
+        }
+
+        .tag-nexus {
+            background: rgba(192, 132, 252, 0.18);
+            border: 1.5px solid var(--neon-purple);
+            color: #f3e8ff;
+            box-shadow: 0 0 16px rgba(192, 132, 252, 0.24);
         }
 
         /* Sección inferior: Web DAIoficial */
@@ -468,7 +539,7 @@
         }
 
         .portal-embed-top h3 {
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             color: #67e8f9;
             font-weight: 800;
         }
@@ -553,9 +624,9 @@
             </div>
         </section>
 
-        <!-- CUADRÍCULA DE LOS 4 JUEGOS -->
+        <!-- CUADRÍCULA DE LOS 4 JUEGOS: 2 ARRIBA Y 2 ABAJO -->
         <section aria-label="Juegos disponibles">
-            <div class="section-header-box" style="margin-bottom: 16px;">
+            <div class="section-header-box" style="margin-bottom: 14px;">
                 <h2>🎮 Elige tu Juego</h2>
                 <p>Toca cualquier tarjeta o su etiqueta para abrir el juego directamente.</p>
             </div>
@@ -564,77 +635,98 @@
                 <!-- 1. MEMORIA -->
                 <a href="https://figueredo56.github.io/ZAARD-MEMORIA-ARCADE/" target="_blank" class="game-card card-memoria">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO MEMORIA (reemplaza src cuando pases tu imagen) -->
+                        <!-- IMAGEN JUEGO MEMORIA (reemplaza src con tu imagen panorámica) -->
                         <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1791940828941-906fd2a3d85625f79d066e5b033f6011.png" alt="ZAARD Memoria">
                     </div>
                     <div class="game-body">
                         <div>
                             <div class="game-title">🧠 ZAARD MEMORIA</div>
                             <p class="game-desc">
-                                Pon a prueba tu memoria, voltea cartas y arma las parejas exactas en el menor tiempo posible.
+                                Voltea cartas, encuentra las parejas exactas y supera cada nivel.
                             </p>
                         </div>
-                        <div class="game-go-tag">⚡ IR A ZAARD MEMORIA ↗</div>
+                        <div class="game-go-tag">⚡ IR A MEMORIA ↗</div>
                     </div>
                 </a>
 
                 <!-- 2. LUCKY -->
                 <a href="https://figueredo56.github.io/ZAARDarcadeLUCKY/ZAARDARCADELUCKY.html" target="_blank" class="game-card card-lucky">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO LUCKY (reemplaza src cuando pases tu imagen) -->
+                        <!-- IMAGEN JUEGO LUCKY (reemplaza src con tu imagen panorámica) -->
                         <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1794605349763-3b36fe22e2048e05bbf50f8bdf231392.png" alt="ZAARD Lucky">
                     </div>
                     <div class="game-body">
                         <div>
                             <div class="game-title">🍀 ZAARD LUCKY</div>
                             <p class="game-desc">
-                                Desafía tu suerte con rondas rápidas, giros y recompensas especiales del arcade.
+                                Pon a prueba tu suerte con tiradas rápidas y premios del arcade.
                             </p>
                         </div>
-                        <div class="game-go-tag">⚡ IR A ZAARD LUCKY ↗</div>
+                        <div class="game-go-tag">⚡ IR A LUCKY ↗</div>
                     </div>
                 </a>
 
                 <!-- 3. RUN (GO) -->
                 <a href="https://figueredo56.github.io/ZAARD-ARCADE-GO/" target="_blank" class="game-card card-run">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO RUN (reemplaza src cuando pases tu imagen) -->
+                        <!-- IMAGEN JUEGO RUN (reemplaza src con tu imagen panorámica) -->
                         <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790286366724-9003585f30626b9963bd86a5cf26c8ca.png" alt="ZAARD Run">
                     </div>
                     <div class="game-body">
                         <div>
                             <div class="game-title">🔥 ZAARD RUN</div>
                             <p class="game-desc">
-                                Arranca el corredor en llamas, salta obstáculos y recoge monedas a toda velocidad.
+                                Arranca el corredor en llamas, salta obstáculos y suma monedas.
                             </p>
                         </div>
-                        <div class="game-go-tag">⚡ IR A ZAARD RUN ↗</div>
+                        <div class="game-go-tag">⚡ IR A RUN ↗</div>
                     </div>
                 </a>
 
                 <!-- 4. BATTLE -->
                 <a href="https://figueredo56.github.io/ZAARD-Space-Battle-/" target="_blank" class="game-card card-battle">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO BATTLE (reemplaza src cuando pases tu imagen) -->
+                        <!-- IMAGEN JUEGO BATTLE (reemplaza src con tu imagen panorámica) -->
                         <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790288769685-7d9a89bc13043a812c4889cb55ac4a54.png" alt="ZAARD Battle">
                     </div>
                     <div class="game-body">
                         <div>
                             <div class="game-title">🚀 ZAARD BATTLE</div>
                             <p class="game-desc">
-                                Pilota la Nave ZAARD con disparo continuo y enfrenta oleadas espaciales desde arriba.
+                                Disparo continuo desde la Nave ZAARD contra oleadas espaciales.
                             </p>
                         </div>
-                        <div class="game-go-tag">⚡ IR A ZAARD BATTLE ↗</div>
+                        <div class="game-go-tag">⚡ IR A BATTLE ↗</div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- FRANJA DIVISORIA -->
+        <!-- ETIQUETAS DE ACCESO: FINANCE, TRACKER, WEB y NEXUS -->
         <div class="energy-divider">
-            <strong>⚡ EL PODER DEL FÉNIX & EL UNIVERSO ZAARD ⚡</strong>
-            <span>Explora el portal oficial DAIoficial justo debajo o ábrelo en una pestaña nueva.</span>
+            <div>
+                <strong>⚡ EL PODER DEL FÉNIX & EL UNIVERSO ZAARD ⚡</strong>
+                <span>Accesos directos del ecosistema antes del portal oficial.</span>
+            </div>
+
+            <div class="quick-tags-row">
+                <!-- Reemplaza el href si usas otra ruta exacta de FINANCE -->
+                <a href="https://figueredo56.github.io/zaard-innovation-dapp/" target="_blank" class="ecosystem-tag-btn tag-finance">
+                    💎 FINANCE ↗
+                </a>
+                <!-- Reemplaza el href si usas otra ruta exacta de TRACKER -->
+                <a href="https://figueredo56.github.io/zaard-tracker/" target="_blank" class="ecosystem-tag-btn tag-tracker">
+                    📊 TRACKER ↗
+                </a>
+                <!-- Reemplaza el href si usas otra ruta exacta de WEB -->
+                <a href="https://figueredo56.github.io/DAIoficial/" target="_blank" class="ecosystem-tag-btn tag-web">
+                    🌐 WEB ↗
+                </a>
+                <!-- Reemplaza el href con el enlace exacto de NEXUS cuando lo tengas -->
+                <a href="https://figueredo56.github.io/ZAARD-MENU-DE-JUEGOS/" target="_blank" class="ecosystem-tag-btn tag-nexus">
+                    🌀 NEXUS ↗
+                </a>
+            </div>
         </div>
 
         <!-- PÁGINA WEB DAIoficial INTEGRADA ABAJO -->
@@ -649,10 +741,8 @@
         </section>
 
     </main>
-    
 
     <script>
-        // Cambio de aura ambiental
         const auras = ["aura-0", "aura-1", "aura-2"];
         let auraIdx = 0;
         setInterval(() => {
@@ -661,7 +751,6 @@
             document.body.classList.add(auras[auraIdx]);
         }, 12000);
 
-        // Secuencia de 3 imágenes en la portada (una tras otra)
         const slides = document.querySelectorAll(".hero-slide");
         const dots = document.querySelectorAll(".slide-dot");
         let currentSlide = 0;
