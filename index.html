@@ -164,20 +164,18 @@
             100% { opacity: 1; transform: scaleY(1.08); transform-origin: bottom; }
         }
 
-        /* PANTALLA DE BIENVENIDA */
+        /* PANTALLA DE BIENVENIDA FLOTANTE (ESTILO CAPTURA) */
         .welcome-screen {
             position: fixed;
             inset: 0;
             z-index: 99;
-            background: radial-gradient(circle at 50% 25%, rgba(255, 107, 26, 0.28), transparent 52%),
-                        radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.24), transparent 55%),
-                        linear-gradient(175deg, #0b0424 0%, #070214 55%, #04010c 100%);
+            background: radial-gradient(circle at 50% 42%, rgba(34, 211, 238, 0.14), rgba(6, 3, 14, 0.90) 62%, rgba(3, 1, 8, 0.96) 100%);
+            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px;
-            overflow-y: auto;
-            transition: opacity 0.65s ease, transform 0.65s ease, visibility 0.65s ease;
+            padding: 24px 18px;
+            transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s ease;
         }
 
         .welcome-screen.hidden-screen {
@@ -187,122 +185,83 @@
             pointer-events: none;
         }
 
-        .welcome-card {
+        .welcome-floating-box {
             position: relative;
             z-index: 5;
             width: 100%;
-            max-width: 760px;
-            border-radius: 24px;
-            padding: 20px 18px 24px;
-            background: linear-gradient(165deg, rgba(25, 10, 56, 0.96), rgba(9, 4, 22, 0.98));
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 55px rgba(255, 107, 26, 0.36), 0 0 65px rgba(168, 85, 247, 0.52), 0 0 35px rgba(34, 211, 238, 0.35);
+            max-width: 440px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 14px;
+            animation: floatDrift 3.6s infinite alternate ease-in-out;
         }
 
-        .welcome-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 900;
-            letter-spacing: 0.8px;
-            color: #67e8f9;
-            background: rgba(34, 16, 68, 0.95);
-            border: 1px solid rgba(34, 211, 238, 0.7);
-            box-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
+        @keyframes floatDrift {
+            0% { transform: translateY(-4px); }
+            100% { transform: translateY(4px); }
         }
 
-        .welcome-img-frame {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            max-height: 290px;
-            border-radius: 18px;
+        .welcome-medallion {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--phoenix-orange), var(--neon-purple));
+            box-shadow: 0 0 28px rgba(34, 211, 238, 0.85), 0 0 48px rgba(255, 107, 26, 0.45);
             overflow: hidden;
-            border: 2px solid var(--phoenix-orange);
-            box-shadow: 0 0 35px rgba(255, 107, 26, 0.45), 0 0 25px rgba(34, 211, 238, 0.3);
         }
 
-        .welcome-img-frame img {
+        .welcome-medallion img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
             display: block;
-            filter: saturate(1.28) contrast(1.08);
-            animation: welcomeZoom 7s infinite alternate ease-in-out;
-        }
-
-        @keyframes welcomeZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.06); }
         }
 
         .welcome-title {
-            font-size: clamp(1.45rem, 3.6vw, 2.35rem);
+            font-size: clamp(1.25rem, 4.8vw, 1.72rem);
             font-weight: 900;
-            line-height: 1.18;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--phoenix-orange), #fde047, var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.8px;
+            line-height: 1.22;
+            color: #5eead4;
+            text-shadow: 0 0 18px rgba(34, 211, 238, 0.65), 0 0 32px rgba(255, 107, 26, 0.35);
             text-transform: uppercase;
         }
 
         .welcome-subtitle {
-            font-size: clamp(0.95rem, 1.8vw, 1.12rem);
-            font-weight: 800;
-            color: #f3e8ff;
-            letter-spacing: 0.3px;
-        }
-
-        .welcome-tech-box {
-            width: 100%;
-            background: rgba(13, 6, 31, 0.92);
-            border: 1px solid rgba(192, 132, 252, 0.55);
-            border-left: 4px solid var(--neon-cyan);
-            border-radius: 14px;
-            padding: 12px 14px;
-            font-size: clamp(0.84rem, 1.4vw, 0.98rem);
+            font-size: clamp(0.84rem, 3.2vw, 0.96rem);
             color: #e2e8f0;
-            line-height: 1.52;
-            text-align: left;
-            box-shadow: inset 0 0 20px rgba(109, 40, 217, 0.25);
-        }
-
-        .welcome-tech-box strong {
-            color: #67e8f9;
+            line-height: 1.45;
+            max-width: 390px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
         }
 
         .btn-enter-arcade {
-            margin-top: 4px;
-            width: 100%;
-            max-width: 420px;
-            padding: 14px 22px;
+            margin-top: 6px;
+            padding: 11px 28px;
             border: none;
-            border-radius: 14px;
+            border-radius: 999px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.88rem;
             font-weight: 900;
-            letter-spacing: 0.6px;
-            color: #06030e;
-            background: linear-gradient(90deg, var(--neon-cyan), #fde047, var(--phoenix-orange));
-            box-shadow: 0 0 28px rgba(34, 211, 238, 0.6), 0 0 36px rgba(255, 107, 26, 0.5);
-            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #041316;
+            background: linear-gradient(90deg, #2dd4bf, #34d399, #22d3ee);
+            box-shadow: 0 0 24px rgba(45, 212, 191, 0.72), 0 0 38px rgba(34, 211, 238, 0.42);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .btn-enter-arcade:hover {
-            transform: translateY(-2px) scale(1.01);
-            box-shadow: 0 0 38px rgba(34, 211, 238, 0.85), 0 0 46px rgba(255, 107, 26, 0.75);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 34px rgba(45, 212, 191, 0.95), 0 0 46px rgba(255, 107, 26, 0.45);
         }
 
         .btn-enter-arcade:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         /* Navbar superior */
@@ -852,24 +811,20 @@
 
     <div class="bottom-flame-aura"></div>
 
-    <!-- PANTALLA DE BIENVENIDA -->
+    <!-- PANTALLA DE BIENVENIDA FLOTANTE -->
     <div class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-label="Bienvenida ZAARD INNOVATION">
-        <div class="welcome-card">
-            <div class="welcome-badge">⚡ XENOCRYPT // ZAARD INNOVATION CORE ⚡</div>
-
-            <div class="welcome-img-frame">
-                <img src="https://raw.githubusercontent.com/figueredo56/ZAARD-MENU-DE-JUEGOS/refs/heads/main/228%20sin%20t%C3%ADtulo_20260809162317.png" alt="Bienvenida Centro de Juegos ZAARD INNOVATION">
+        <div class="welcome-floating-box">
+            <div class="welcome-medallion">
+                <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790285851823-4955b8f5511ea8235af22dfb82371c91.png" alt="Emblema Centro de Juegos ZAARD INNOVATION">
             </div>
 
-            <h1 class="welcome-title">🔥 BIENVENIDOS AL CENTRO DE JUEGOS 🔥</h1>
-            <p class="welcome-subtitle">Ecosistema ZAARD INNOVATION — Arquitectura Arcade & Web3 de Alta Energía</p>
-
-            <div class="welcome-tech-box">
-                <strong>[NÚCLEO TÉCNICO ZAARD]:</strong> Motor interactivo multijuego de baja latencia desplegado sobre infraestructura estática distribuida y conectado al ecosistema <strong>ZAARD INNOVATION</strong> (Memoria, Lucky, Run, Battle, Finance, Tracker, Web y Nexus) con renderizado acelerado, transiciones dinámicas y acceso directo sin fricción.
-            </div>
+            <h1 class="welcome-title">ZAARD ARCADE OFFICIAL</h1>
+            <p class="welcome-subtitle">
+                Bienvenidos al Centro de Juegos del ecosistema ZAARD INNOVATION — Arquitectura arcade Web3 de alta energía con ejecución instantánea y módulos interconectados.
+            </p>
 
             <button class="btn-enter-arcade" onclick="cerrarBienvenida()">
-                ⚡ ENTRAR AL MENÚ DE JUEGOS ↗
+                INGRESAR AL CENTRO DE JUEGOS
             </button>
         </div>
     </div>
@@ -1021,7 +976,7 @@
     </main>
 
     <script>
-        // Pantalla de bienvenida
+        // Pantalla de bienvenida flotante
         const welcomeScreen = document.getElementById("welcomeScreen");
         function cerrarBienvenida() {
             if (!welcomeScreen) return;
