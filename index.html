@@ -169,7 +169,7 @@
             }
         }
 
-        /* Portada rotativa de 3 imágenes */
+        /* Portada rotativa de 3 imágenes con efectos super calidad */
         .hero-banner-card {
             position: relative;
             width: 100%;
@@ -184,7 +184,8 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            max-height: 360px;
+            max-height: 390px;
+            overflow: hidden;
         }
 
         .hero-slide {
@@ -194,21 +195,50 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transform: scale(1.04);
-            transition: opacity 0.75s ease, transform 1.2s ease;
+            transform: scale(1.08);
+            filter: brightness(0.82) saturate(1.18) contrast(1.06);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 3.8s ease-out, filter 0.9s ease;
             pointer-events: none;
         }
 
         .hero-slide.active {
             opacity: 1;
             transform: scale(1);
+            filter: brightness(1.04) saturate(1.32) contrast(1.08);
+        }
+
+        .hero-shine-sweep {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 25%, rgba(34, 211, 238, 0.24) 46%, rgba(255, 255, 255, 0.36) 50%, rgba(255, 107, 26, 0.24) 54%, transparent 75%);
+            transform: translateX(-130%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-shine-sweep.sweep-play {
+            animation: heroSweepAnim 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes heroSweepAnim {
+            0% { transform: translateX(-130%); opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { transform: translateX(130%); opacity: 0.1; }
+        }
+
+        .hero-vignette-glow {
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 55px rgba(34, 211, 238, 0.28), inset 0 0 90px rgba(168, 85, 247, 0.25);
+            pointer-events: none;
+            z-index: 2;
         }
 
         .hero-overlay {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             padding: 16px 18px 18px;
-            background: linear-gradient(180deg, rgba(10, 4, 24, 0.35) 0%, rgba(10, 4, 24, 0.90) 45%, rgba(9, 3, 21, 0.96) 100%);
+            background: linear-gradient(180deg, rgba(10, 4, 24, 0.42) 0%, rgba(10, 4, 24, 0.92) 45%, rgba(9, 3, 21, 0.97) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -603,12 +633,11 @@
         <!-- PORTADA ROTATIVA DE 3 IMÁGENES (una tras otra) -->
         <section class="hero-banner-card" aria-label="Portada ZAARD ARCADE">
             <div class="hero-slideshow">
-                <!-- PORTADA IMAGEN 1 -->
-                <img class="hero-slide active" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790285851823-4955b8f5511ea8235af22dfb82371c91.png" alt="Portada ZAARD 1">
-                <!-- PORTADA IMAGEN 2 -->
-                <img class="hero-slide" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790484633328-559fdd3c13098c92f8a665ac39a838c2.png" alt="Portada ZAARD 2">
-                <!-- PORTADA IMAGEN 3 -->
-                <img class="hero-slide" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1793917735714-d84b28c0d04f3063f454cbc1d8a062fb.png" alt="Portada ZAARD 3">
+                <img class="hero-slide active" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646596681-e86895b90a31625a5d3757a4182113d2.jpg" alt="Portada ZAARD 1">
+                <img class="hero-slide" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646357500-32b7cad1ffe8ae77e03aefd9992b44d1.jpg" alt="Portada ZAARD 2">
+                <img class="hero-slide" src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646336717-f5893b3e58aeffb315b646e8b177afc8.jpg" alt="Portada ZAARD 3">
+                <div class="hero-shine-sweep" id="heroShineSweep"></div>
+                <div class="hero-vignette-glow"></div>
             </div>
 
             <div class="hero-overlay">
@@ -635,8 +664,7 @@
                 <!-- 1. MEMORIA -->
                 <a href="https://figueredo56.github.io/ZAARD-MEMORIA-ARCADE/" target="_blank" class="game-card card-memoria">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO MEMORIA -->
-                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1791940828941-906fd2a3d85625f79d066e5b033f6011.png" alt="ZAARD Memoria">
+                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646253805-c9d1a4b5a9e020e70c324e0451ac3dc3.jpg" alt="ZAARD Memoria">
                     </div>
                     <div class="game-body">
                         <div>
@@ -652,8 +680,7 @@
                 <!-- 2. LUCKY -->
                 <a href="https://figueredo56.github.io/ZAARDarcadeLUCKY/ZAARDARCADELUCKY.html" target="_blank" class="game-card card-lucky">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO LUCKY -->
-                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1794605349763-3b36fe22e2048e05bbf50f8bdf231392.png" alt="ZAARD Lucky">
+                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646297882-32758289bf59f0439c5ff5c070b5fb2a.jpg" alt="ZAARD Lucky">
                     </div>
                     <div class="game-body">
                         <div>
@@ -669,8 +696,7 @@
                 <!-- 3. RUN (GO) -->
                 <a href="https://figueredo56.github.io/ZAARD-ARCADE-GO/" target="_blank" class="game-card card-run">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO RUN -->
-                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790286366724-9003585f30626b9963bd86a5cf26c8ca.png" alt="ZAARD Run">
+                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646276243-4938de5c7a2437bbef5f260335ab0e85.jpg" alt="ZAARD Run">
                     </div>
                     <div class="game-body">
                         <div>
@@ -686,8 +712,7 @@
                 <!-- 4. BATTLE -->
                 <a href="https://figueredo56.github.io/ZAARD-Space-Battle-/" target="_blank" class="game-card card-battle">
                     <div class="game-media-wrap">
-                        <!-- IMAGEN JUEGO BATTLE -->
-                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1790288769685-7d9a89bc13043a812c4889cb55ac4a54.png" alt="ZAARD Battle">
+                        <img src="https://photos.pinksale.finance/file/pinksale-logo-upload/1795646230834-cceb492ab1014e64f849da1b02b50032.jpg" alt="ZAARD Battle">
                     </div>
                     <div class="game-body">
                         <div>
@@ -749,8 +774,16 @@
 
         const slides = document.querySelectorAll(".hero-slide");
         const dots = document.querySelectorAll(".slide-dot");
+        const shineSweep = document.getElementById("heroShineSweep");
         let currentSlide = 0;
         let slideTimer = null;
+
+        function dispararDestelloPortada() {
+            if (!shineSweep) return;
+            shineSweep.classList.remove("sweep-play");
+            void shineSweep.offsetWidth;
+            shineSweep.classList.add("sweep-play");
+        }
 
         function irAPortada(index) {
             currentSlide = (index + slides.length) % slides.length;
@@ -760,6 +793,7 @@
             dots.forEach((dot, i) => {
                 dot.classList.toggle("active", i === currentSlide);
             });
+            dispararDestelloPortada();
             reiniciarCarrusel();
         }
 
@@ -769,7 +803,7 @@
 
         function reiniciarCarrusel() {
             if (slideTimer) clearInterval(slideTimer);
-            slideTimer = setInterval(siguientePortada, 3200);
+            slideTimer = setInterval(siguientePortada, 3400);
         }
 
         reiniciarCarrusel();
